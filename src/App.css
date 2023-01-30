@@ -17,7 +17,6 @@
 
 
 
-
 /* .home-products-main{
   display: flex;
   
@@ -79,6 +78,10 @@
 .productid-img-select{
  width: 50px;
  height: 100px;
+}
+
+.similar-products {
+  
 }
 
 

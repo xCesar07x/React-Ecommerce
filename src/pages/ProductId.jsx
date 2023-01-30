@@ -28,6 +28,12 @@ const ProductId = () => {
     }, [id])
 
     // console.log(products)
+    window.scrollTo({
+        top: 8,
+        left: 0,
+        behavior: 'smooth'
+    });
+      
 
     return (
         <div className='productsId-conatiner-main '>
@@ -103,9 +109,9 @@ const ProductId = () => {
                         onClick={() => navigate(`/products/${product.id}`)}
                         key={product.id}
                     >
-                        <Card className='similar-products'>
+                        <Card className='similar-products' >
                             <div style={{ display: "flex", justifyContent: "center" }}>
-                                <Card.Img style={{ width: "250px", height: "250px", objectFit: "contain", }}
+                                <Card.Img style={{ width: "250px", height: "250px", objectFit: "contain", padding: "1rem"}}
                                     variant="top"
                                     src={product.images[0].url}
                                 />
