@@ -93,21 +93,43 @@ const Home = () => {
 
                                 <Col key={product.id} onClick={() => navigate(`/products/${product.id}`)} >
                                     <Card>
-                                        <Card.Img 
-                                        variant="top" 
-                                        src={product.images[0].url} 
-                                        style={{height: "200px", objectFit: "contain", padding: "1rem"}}
+                                        <Card.Img
+                                            variant="top"
+                                            src={product.images[0].url}
+                                            style={{ height: "200px", objectFit: "contain", padding: "1rem" }}
                                         />
-                                        <Card.Body style={{height: "250px"}}>
-                                            <Card.Title>{product.title}</Card.Title>
-                                            <Card.Text>
+                                        <Card.Body style={{ height: "250px" }}>
+                                            <Card.Text style={{
+                                                textTransform: "none",
+                                                letterSpacing: "1px",
+                                                fontSize: "1.1rem",
+                                                color: "darkgray",
+                                            }}>
                                                 {product.brand}
                                             </Card.Text>
-                                            <Card.Text>
+                                            <Card.Title style={{
+                                                textTransform: "none",
+                                                letterSpacing: "1px",
+                                                fontFamily: "system-ui",
+                                            }}>
+                                                {product.title}
+                                            </Card.Title>
+
+                                            <Card.Text style={{
+                                                textTransform: "none",
+                                                letterSpacing: "1px",
+                                                fontSize: "1.1rem",
+                                                color: "darkgray",
+                                            }}>
                                                 Price
                                             </Card.Text>
                                             <div className='products-price-cart'>
-                                                <Card.Title>
+                                                <Card.Title style={{
+                                                    textTransform: "none",
+                                                    letterSpacing: "1px",
+                                                    fontFamily: "system-ui",
+                                                    fontWeight: "bold"
+                                                }}>
                                                     $ {product.price}
                                                 </Card.Title>
 
