@@ -13,8 +13,7 @@ import { Container } from 'react-bootstrap'
 import ProtectedRoutes from './components/ProtectedRoutes'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   const isLoading = useSelector(state => state.isLoading)
 
   return (

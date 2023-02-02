@@ -16,6 +16,12 @@
   box-shadow: 0px 0px 0px .5px lightslategray;
 }
 
+.price-quantity-conatiner{
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
 
 
 /* .home-products-main{
