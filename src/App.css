@@ -234,6 +234,7 @@
 @media (min-width: 1024px) {
   .home-products-list .card:hover {
     transform: scale(1.1, 1.1);
+    transition: .5s;
   }
 
   .home-products-main {
@@ -242,10 +243,12 @@
 
   .similar-products:hover {
     transform: scale(1.1, 1.1);
+    transition: .5s;
   }
 
   .cart-link:hover {
     transform: scale(1.1, 1.1);
+    transition: .5s;
     box-shadow: 0px 0px 0px .5px lightgray;
   }
 
@@ -289,6 +292,7 @@
   .purchases-list:hover {
     box-shadow: 0px 0px 0px 1px lightslategray;
     transform: scale(1.1, 1.1);
+    transition: .5s;
   }
 
   .filters-container {
