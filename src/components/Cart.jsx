@@ -39,18 +39,18 @@ const Cart = ({ show, handleClose }) => {
                         cart.map(cart => (
                             <div
                                 key={cart.id}>
-                                <Link className='cart-link' onClick={handleClose} to={`/products/${cart.product.id}`}>
+                                <Link className='cart-link' onClick={handleClose} to={`/products/${cart.product?.id}`}>
                                     <img className='cart-img'
-                                        src={cart.product.images[0].url} alt=""
+                                        src={cart.product?.images[0].url} alt=""
                                     />
                                     <div >
                                         <h6 className='cart-title'>
-                                            {cart.product.title}
+                                            {cart.product?.title}
 
                                         </h6>
                                         <div>
                                             <p style={{textAlign: "center"}}>
-                                                {cart.quantity}
+                                                {cart?.quantity}
                                             </p>
                                         </div>
 

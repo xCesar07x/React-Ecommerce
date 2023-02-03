@@ -2,12 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Collapse, Offcanvas, Form, InputGroup, Row, Nav } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addCartThunk } from '../store/slices/cart.slice';
 import { filterProductsCategoryThunk, filterProductsTitle, getProductsThunk } from '../store/slices/products.slice';
 
 const Home = () => {
 
     const dispatch = useDispatch();
+
+    const { id } = useParams();
 
     const productsList = useSelector(state => state.products);
 
@@ -26,6 +29,19 @@ const Home = () => {
 
 
 
+    // const [addCart, setAddCart] = useState(1)
+
+
+    // const addToCart = () => {
+    //     const cart = {
+    //         quantity: addCart,
+    //         productId: id
+    //     }
+    //     dispatch(addCartThunk(cart))
+    // }
+
+
+
     useEffect(() => {
         dispatch(getProductsThunk());
 
@@ -34,6 +50,7 @@ const Home = () => {
     }, [])
 
     // console.log(categories)
+    // console.log(productsList)
 
     const [open, setOpen] = useState(true);
 
@@ -122,7 +139,7 @@ const Home = () => {
                                         categories.map(category => (
                                             <div key={category.id} onClick={handleClose}>
                                                 <Button style={{ width: "150px" }}
-                                                     onClick={() => dispatch(filterProductsCategoryThunk(category.id))}>
+                                                    onClick={() => dispatch(filterProductsCategoryThunk(category.id))}>
                                                     {category.name}
                                                 </Button>
                                             </div>
@@ -143,54 +160,62 @@ const Home = () => {
 
                             {productsList.map(product => (
 
-                                <Col key={product.id} onClick={() => navigate(`/products/${product.id}`)} >
-                                    <Card>
-                                        <Card.Img
-                                            variant="top"
-                                            src={product.images[0].url}
-                                            style={{ height: "200px", objectFit: "contain", padding: "1rem" }}
-                                        />
-                                        <Card.Body style={{ height: "250px" }}>
-                                            <Card.Text style={{
-                                                textTransform: "none",
-                                                letterSpacing: "1px",
-                                                fontSize: "1.1rem",
-                                                color: "darkgray",
-                                            }}>
-                                                {product.brand}
-                                            </Card.Text>
-                                            <Card.Title style={{
-                                                textTransform: "none",
-                                                letterSpacing: "1px",
-                                                fontFamily: "system-ui",
-                                            }}>
-                                                {product.title}
-                                            </Card.Title>
+                                <Col key={product.id}  >
 
-                                            <Card.Text style={{
-                                                textTransform: "none",
-                                                letterSpacing: "1px",
-                                                fontSize: "1.1rem",
-                                                color: "darkgray",
-                                            }}>
-                                                Price
-                                            </Card.Text>
-                                            <div className='products-price-cart'>
+                                    <Card >
+                                        <div onClick={() => navigate(`/products/${product.id}`)}>
+                                            <Card.Img
+                                                variant="top"
+                                                src={product.images[0].url}
+                                                style={{ height: "200px", objectFit: "contain", padding: "1rem" }}
+                                            />
+                                            <Card.Body style={{ height: "220px" }}>
+                                                <Card.Text style={{
+                                                    textTransform: "none",
+                                                    letterSpacing: "1px",
+                                                    fontSize: "1.1rem",
+                                                    color: "darkgray",
+                                                }}>
+                                                    {product.brand}
+                                                </Card.Text>
                                                 <Card.Title style={{
                                                     textTransform: "none",
                                                     letterSpacing: "1px",
                                                     fontFamily: "system-ui",
-                                                    fontWeight: "bold"
                                                 }}>
-                                                    $ {product.price}
+                                                    {product.title}
                                                 </Card.Title>
 
-                                                <Button style={{ borderRadius: "5%" }} variant="primary">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="whitesmoke" className="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> </svg>
-                                                </Button>
-                                            </div>
-                                        </Card.Body>
+                                                <Card.Text style={{
+                                                    textTransform: "none",
+                                                    letterSpacing: "1px",
+                                                    fontSize: "1.1rem",
+                                                    color: "darkgray",
+                                                }}>
+                                                    Price
+                                                </Card.Text>
+                                                <div className='products-price-cart'>
+                                                    <Card.Title style={{
+                                                        textTransform: "none",
+                                                        letterSpacing: "1px",
+                                                        fontFamily: "system-ui",
+                                                        fontWeight: "bold"
+                                                    }}>
+                                                        $ {product.price}
+                                                    </Card.Title>
+
+
+                                                </div>
+                                            </Card.Body>
+                                        </div>
+
+                                        <Button style={{ width: "100%" }} variant="primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="whitesmoke" className="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> </svg>
+                                        </Button>
                                     </Card>
+
+
+
                                 </Col>
                             ))}
                         </Row>

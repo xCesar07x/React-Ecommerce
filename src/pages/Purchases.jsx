@@ -30,14 +30,14 @@ const Purchases = () => {
                     purchases.map(purchase => (
                         <li className='purchases-list'
                             key={purchase.id}>
-                            <Link className='purchases-link' to={`/products/${purchase.product.id}`}>
+                            <Link className='purchases-link' to={`/products/${purchase.product?.id}`}>
                                 <img className='purchases-img'
-                                    src={purchase.product.images[0].url} alt=""
+                                    src={purchase.product?.images[0].url} alt=""
                                 />
-                                <div className='purchases-title' >{purchase.product.title}</div>
+                                <div className='purchases-title' >{purchase.product?.title}</div>
                                 <div className='purchases-convertion' >{convertion}</div>
                                 <div className='purchases-quantity' >{purchase.quantity}</div>
-                                <div className='purchases-price' >$ {purchase.product.price}</div>
+                                <div className='purchases-price' >$ {purchase.product?.price}</div>
                             </Link>
                         </li>
                     ))

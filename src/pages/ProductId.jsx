@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { addCartThunk } from '../store/slices/cart.slice';
 import { filterProductsCategoryThunk } from '../store/slices/products.slice';
 
+
 const ProductId = () => {
 
     const { id } = useParams();
@@ -35,7 +36,7 @@ const ProductId = () => {
         behavior: 'smooth'
     });
 
-    const [addCart,setAddCart] = useState(1)
+    const [addCart, setAddCart] = useState(1)
 
 
     const addToCart = () => {
@@ -47,7 +48,7 @@ const ProductId = () => {
     }
 
     const decrement = () => {
-        if( addCart > 1 ){
+        if (addCart > 1) {
             setAddCart(addCart - 1)
         }
     }
@@ -182,66 +183,74 @@ const ProductId = () => {
 
                 </Col>
             </Row>
+            {/*SiMILAR PRODUCTS*/}
             <h4>Similar Products</h4>
             <Row xs={1} md={2} lg={3} className="g-5">
                 {productsFiltered.map(product => (
                     <Col className='similar-products'
-                        onClick={() => navigate(`/products/${product.id}`)}
+
                         key={product.id}
                     >
-                        <Card style={{ height: "480px" }}>
-                            <div style={{ display: "flex", justifyContent: "center" }}>
-                                <Card.Img style={{ width: "250px", height: "250px", objectFit: "contain", padding: "1rem" }}
-                                    variant="top"
-                                    src={product.images[0].url}
-                                />
-                            </div>
-                            <Card.Body>
-                                <Card.Text style={{
-                                    textTransform: "none",
-                                    letterSpacing: "1px",
-                                    fontSize: "1.1rem",
-                                    color: "darkgray",
-                                }}>
-                                    {product.brand}
-                                </Card.Text>
-                                <Card.Title style={{
-                                    textTransform: "none",
-                                    letterSpacing: "1px",
-                                    fontFamily: "system-ui",
-                                }}>
-                                    {product.title}
-                                </Card.Title>
-
-                                <Card.Text style={{
-                                    textTransform: "none",
-                                    letterSpacing: "1px",
-                                    fontSize: "1.1rem",
-                                    color: "darkgray",
-                                }}>
-                                    Price
-                                </Card.Text>
-
-                                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+                        <div>
+                            <Card onClick={() => navigate(`/products/${product.id}`)}
+                                style={{ height: "480px" }}>
+                                <div style={{ display: "flex", justifyContent: "center" }}>
+                                    <Card.Img style={{ width: "250px", height: "250px", objectFit: "contain", padding: "1rem" }}
+                                        variant="top"
+                                        src={product.images[0].url}
+                                    />
+                                </div>
+                                <Card.Body>
                                     <Card.Text style={{
                                         textTransform: "none",
                                         letterSpacing: "1px",
-                                        fontFamily: "system-ui",
-                                        fontWeight: "bold"
+                                        fontSize: "1.1rem",
+                                        color: "darkgray",
                                     }}>
-                                        $ {product.price}
-
+                                        {product.brand}
                                     </Card.Text>
-                                    <Button style={{ borderRadius: "5%" }} variant="primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="whitesmoke" className="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> </svg>
-                                    </Button>
-                                </div>
+                                    <Card.Title style={{
+                                        textTransform: "none",
+                                        letterSpacing: "1px",
+                                        fontFamily: "system-ui",
+                                    }}>
+                                        {product.title}
+                                    </Card.Title>
 
-                            </Card.Body>
-                        </Card>
+                                    <Card.Text style={{
+                                        textTransform: "none",
+                                        letterSpacing: "1px",
+                                        fontSize: "1.1rem",
+                                        color: "darkgray",
+                                    }}>
+                                        Price
+                                    </Card.Text>
+
+                                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+                                        <Card.Text style={{
+                                            textTransform: "none",
+                                            letterSpacing: "1px",
+                                            fontFamily: "system-ui",
+                                            fontWeight: "bold"
+                                        }}>
+                                            $ {product.price}
+
+                                        </Card.Text>
+
+                                    </div>
+
+                                </Card.Body>
+                            </Card>
+                            <Button 
+                                style={{ width: "100%" }} variant="primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="whitesmoke" className="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> </svg>
+                            </Button>
+                        </div>
+
                     </Col>
                 ))}
             </Row>
+
 
         </div >
     );
