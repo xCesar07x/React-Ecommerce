@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import getConfig from '../../utils/getConfig';
 import { setIsLoading } from './isLoading.slice';
 
@@ -36,6 +37,14 @@ export const purchasesCardThunk = () => (dispatch) => {
         .then(() => dispatch(getCartThunk()))
         .finally(() => dispatch(setIsLoading(false)));
 }
+
+export const deleteCardThunk = (id) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.delete(`https://e-commerce-api-v2.academlo.tech/api/v1/cart/${id}`, getConfig())
+        .then(() => dispatch(getCartThunk()))
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
 
 export const { setCart } = cartSlice.actions;
 

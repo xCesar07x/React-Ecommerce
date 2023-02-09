@@ -27,7 +27,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div  style={{ paddingTop: "3rem", position: "relative", top: "8vw"}}>
             <h1>
                 Login
             </h1>
