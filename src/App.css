@@ -177,6 +177,15 @@
   align-items: center;
 }
 
+.button-top{
+  position: fixed;
+  bottom: 5vw;
+  right: 5vw;
+  border: none;
+  background: whitesmoke;  
+  border-radius: 1rem;
+}
+
 /*************************************MEDIASCREEN***********************************************/
 
 @media (max-width: 768px) {
@@ -266,5 +275,9 @@
   .filters-container {
     display: none;
   }
+  .button-top{
+    display: none;
+  }
+
 
 }
