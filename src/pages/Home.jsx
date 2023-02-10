@@ -66,21 +66,32 @@ const Home = () => {
 
                         <div >
                             <>
-                                <Button style={{ width: "150px" }}
+                                <Button
+                                    style={{ width: "100%" }}
                                     onClick={() => setOpen(!open)}
                                     aria-controls="example-collapse-text"
                                     aria-expanded={open}
                                 >
-                                    Category
+
+                                    <div className='category-button-hover' >
+                                        Category
+                                    </div>
+
                                 </Button>
-                                <Collapse style={{ width: "150px" }}
+                                <Collapse style={{ width: "100%" }}
                                     in={open}>
                                     <div id="example-collapse-text">
                                         {
                                             categories.map(category => (
-                                                <Button style={{ width: "150px" }}
+                                                <Button
+                                                    style={{ width: "100%" }}
                                                     key={category.id} onClick={() => dispatch(filterProductsCategoryThunk(category.id))}>
-                                                    {category.name}
+
+
+                                                    <div className='category-button-hover'> 
+                                                        {category.name}
+                                                    </div>
+
                                                 </Button>
                                             ))
                                         }
@@ -124,21 +135,21 @@ const Home = () => {
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title >Filters</Offcanvas.Title>
                         </Offcanvas.Header>
-                        <Offcanvas.Body className='category-container'>
-                            <Button style={{ width: "150px" }}
+                        <Offcanvas.Body style={{ padding: "0" }} className='category-container'>
+                            <Button style={{ width: "100%", }}
                                 onClick={() => setOpen(!open)}
                                 aria-controls="example-collapse-text"
                                 aria-expanded={open}
                             >
                                 Category
                             </Button>
-                            <Collapse style={{ width: "150px" }}
+                            <Collapse style={{ width: "100%", }}
                                 in={open}>
                                 <div id="example-collapse-text">
                                     {
                                         categories.map(category => (
                                             <div key={category.id} onClick={handleClose}>
-                                                <Button style={{ width: "150px" }}
+                                                <Button style={{ width: "100%", height: "115px" }}
                                                     onClick={() => dispatch(filterProductsCategoryThunk(category.id))}>
                                                     {category.name}
                                                 </Button>
@@ -150,9 +161,6 @@ const Home = () => {
                             </Collapse>
                         </Offcanvas.Body>
                     </Offcanvas>
-
-
-
 
                     <div className='home-products-list' >
 
@@ -209,13 +217,11 @@ const Home = () => {
                                             </Card.Body>
                                         </div>
 
-                                        <Button onClick={() =>  addToCart(1, product.id) }
+                                        <Button onClick={() => addToCart(1, product.id)}
                                             style={{ width: "100%" }} variant="primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="whitesmoke" className="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> </svg>
                                         </Button>
                                     </Card>
-
-
 
                                 </Col>
                             ))}

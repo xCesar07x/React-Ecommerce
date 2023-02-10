@@ -15,8 +15,6 @@ const Cart = ({ show, handleClose }) => {
         
     }, [])
 
-    // console.log(cart);
-
     return (
         <div>
             <Offcanvas placement='end' show={show} onHide={handleClose} >
@@ -32,6 +30,7 @@ const Cart = ({ show, handleClose }) => {
                     }
 
                 </Offcanvas.Body>
+
                 <Button onClick={() => dispatch(purchasesCardThunk())} >
                     Chekout
                 </Button>
