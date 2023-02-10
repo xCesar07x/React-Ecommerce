@@ -45,6 +45,16 @@ export const deleteCardThunk = (id) => (dispatch) => {
         .finally(() => dispatch(setIsLoading(false)));
 }
 
+export const updateCardThunk = (id, quantity) => (dispatch) => {
+
+    const body = { quantity: quantity }
+    
+    dispatch(setIsLoading(true));
+    return axios.put(`https://e-commerce-api-v2.academlo.tech/api/v1/cart/${id}`, body ,getConfig())
+        .then(() => dispatch(getCartThunk()))
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
 
 export const { setCart } = cartSlice.actions;
 

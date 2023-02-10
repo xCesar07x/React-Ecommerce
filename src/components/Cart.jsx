@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCartThunk, purchasesCardThunk } from '../store/slices/cart.slice';
+import { getCartThunk, purchasesCardThunk, updateCardThunk } from '../store/slices/cart.slice';
 import ListCart from './ListCart';
 
 const Cart = ({ show, handleClose }) => {
@@ -12,6 +12,7 @@ const Cart = ({ show, handleClose }) => {
 
     useEffect(() => {
         dispatch(getCartThunk());
+        
     }, [])
 
     // console.log(cart);

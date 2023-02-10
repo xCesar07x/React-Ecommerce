@@ -134,6 +134,12 @@
   letter-spacing: normal;
 }
 
+.cart-quantity{
+  width: 45px;
+  text-align: center;
+  box-shadow: 0px 0px 0px .3px #1a1a1a;
+}
+
 .purchases-list-container {
   box-sizing: border-box;
   text-align: center;
