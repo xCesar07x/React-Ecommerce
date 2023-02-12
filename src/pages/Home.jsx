@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Collapse, Offcanvas, Form, InputGroup, Row, Nav } from 'react-bootstrap';
+import { Card, Col, Offcanvas, Form, InputGroup, Row, Nav, Button, Collapse } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addCartThunk } from '../store/slices/cart.slice';
